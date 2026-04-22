@@ -1,10 +1,11 @@
 {
-  "rewrites": [
-    { "source": "/api/orders", "destination": "/orders" }
-  ],
   "functions": {
-    "orders.js": {
+    "api/orders.js": {
       "maxDuration": 60
     }
-  }
+  },
+  "routes": [
+    { "src": "/api/orders", "dest": "/api/orders.js" },
+    { "src": "/(.*)", "dest": "/api/index.html" }
+  ]
 }
