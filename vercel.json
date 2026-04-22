@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/orders.js": {
+    "api/*.js": {
       "maxDuration": 60
     }
   }
