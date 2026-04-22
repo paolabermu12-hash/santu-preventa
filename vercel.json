@@ -1,9 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/api/orders", "destination": "/orders" }
-  ],
   "functions": {
-    "orders.js": {
+    "api/orders.js": {
       "maxDuration": 60
     }
   }
