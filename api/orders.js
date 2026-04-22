@@ -170,20 +170,18 @@ function processOrders(orders) {
   };
 }
 
-exports.handler = async (event) => {
-  const hdrs = {
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin':'*',
-    'Cache-Control':'public, max-age=300'
-  };
-  if (event.httpMethod==='OPTIONS') return {statusCode:200,headers:hdrs,body:''};
-  if (!STORE||!TOKEN) return {statusCode:500,headers:hdrs,body:JSON.stringify({error:'Missing env vars'})};
+module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'public, max-age=300');
+  res.setHeader('Content-Type', 'application/json');
+  if (req.method === 'OPTIONS') { res.status(200).end(); return; }
+  if (!STORE||!TOKEN) { res.status(500).json({error:'Missing env vars'}); return; }
   try {
     const orders = await getAllOrders();
     const data = processOrders(orders);
-    return {statusCode:200,headers:hdrs,body:JSON.stringify(data)};
+    res.status(200).json(data);
   } catch(err) {
     console.error('ERROR:', err.message);
-    return {statusCode:500,headers:hdrs,body:JSON.stringify({error:err.message})};
+    res.status(500).json({error:err.message});
   }
 };
