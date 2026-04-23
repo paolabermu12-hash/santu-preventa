@@ -58,6 +58,8 @@ const SKU_CONTAINER = {
   '302013':   'Contenedor 35',
   '300313':   'Contenedor 34',
   '301071':   'Contenedor 36',
+  '300110':   'Contenedor 35',
+ 
 };
  
 function assignContainer(orderName, tags, name, fin, ful, sku) {
