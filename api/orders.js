@@ -64,11 +64,6 @@ function assignContainer(orderName, tags, name, fin, ful) {
   if (nl.includes('22 de junio')) return 'Contenedor 36';
 
   // Si no hay fecha en el nombre, usar el tag si es unico
-   // Inferir por fecha del producto primero
-  const nl=name.toLowerCase();
-  if (['29 de abril','16 de abril','20 de marzo'].some(x=>nl.includes(x))) return 'Contenedor 34';
-  if (['08 de junio','01 de junio','8 de junio','30 de mayo'].some(x=>nl.includes(x))) return 'Contenedor 35';
-  if (nl.includes('22 de junio')) return 'Contenedor 36';
   if (active.length===1) return 'Contenedor '+active[0];
   if (active.length>1) return 'Sin Asignar';
   if (hist.length>0) return 'EXCLUIR';
