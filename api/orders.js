@@ -109,7 +109,7 @@ function processOrders(orders) {
     const cat=o.created_at||'';
     revMap.set(on, parseFloat(o.total_price||0));
     for (const item of (o.line_items||[])) {
-      const lname=item.name||item.title||'';
+      const lname=[item.title,item.variant_title,item.name].filter(Boolean).join(' - ');
       if (!lname.toUpperCase().includes('PREVENTA')) continue;
       const sku=(item.sku||'').trim();
       if (EXCLUDE.has(oid+'|'+sku)) continue;
