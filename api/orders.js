@@ -51,7 +51,7 @@ const HISTORICAL = new Set(['32','33','31','30']);
 const MANUAL = {'9616':'Contenedor 34','9629':'Contenedor 35','9931':'Contenedor 36'};
 const EXCLUDE = new Set(['9811|300278','9554|301076']);
  
-// Overrides por SKU cuando el nombre no tiene fecha
+// Overrides por SKU cuando el nombre no tiene fecha O cuando un producto cambio de contenedor
 const SKU_CONTAINER = {
   'PK300622': 'Contenedor 34',
   '301012':   'Contenedor 34',
@@ -59,7 +59,9 @@ const SKU_CONTAINER = {
   '300313':   'Contenedor 34',
   '301071':   'Contenedor 36',
   '300110':   'Contenedor 35',
- 
+  // Productos C35 que se movieron a C36 (pedido #9509 y futuros)
+  'PK301000': 'Contenedor 36',  // Mesa de Centro Irregular Negro Sphere
+  '300521':   'Contenedor 36',  // Set Café Tazas y Platos 230ml Lineas Plateado 6un
 };
  
 function assignContainer(orderName, tags, name, fin, ful, sku) {
@@ -196,5 +198,5 @@ module.exports = async (req, res) => {
     console.error('ERROR:', err.message);
     res.status(500).json({error:err.message});
   }
-};
+};                                                                                                                                           Orders() {
  
